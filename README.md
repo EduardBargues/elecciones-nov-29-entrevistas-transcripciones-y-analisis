@@ -78,6 +78,15 @@ El informe contiene:
 
 Los canales de televisión publican subtítulos oficiales en formato [WebVTT](https://www.w3.org/TR/webvtt1/) para cumplir con los requisitos de accesibilidad.
 
+Los cuatro episodios utilizados son:
+
+| Invitado | URL |
+|---|---|
+| Ada Colau | https://www.rtve.es/play/videos/la-revuelta/programa-10-11-26-ada-colau/17308865/ |
+| Santiago Abascal | https://www.rtve.es/play/videos/la-revuelta/programa-09-11-26-santiago-abascal/17306884/ |
+| Pedro Sánchez | https://www.rtve.es/play/videos/la-revuelta/programa-22-10-2026-pedro-sanchez/17279095/ |
+| Gabriel Rufián e Irene Montero | https://www.rtve.es/play/videos/la-revuelta/programa-27-10-2026-gabriel-rufian-irene-montero-fernandocosta-dollar-selmouni/17286287/ |
+
 Usamos [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) para descargar únicamente el archivo de subtítulos en español, sin descargar el vídeo:
 
 ```bash
