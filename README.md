@@ -1,6 +1,6 @@
 # Elecciones 29-N · Transcripciones de entrevistas políticas
 
-Transcripciones con identificación de hablante de cuatro entrevistas políticas emitidas en RTVE antes de las elecciones generales del 29 de noviembre de 2026.
+Transcripciones con identificación de hablante de cuatro entrevistas políticas emitidas en televisión antes de las elecciones generales del 29 de noviembre de 2026.
 
 ---
 
@@ -8,8 +8,8 @@ Transcripciones con identificación de hablante de cuatro entrevistas políticas
 
 | Archivo | Descripción |
 |---|---|
-| `vtt_to_transcript.py` | Script Python que convierte subtítulos VTT de RTVE en transcripciones etiquetadas por hablante |
-| `subtitles/ada-colau.es.vtt` | Subtítulos originales descargados de RTVE — entrevista con Ada Colau |
+| `vtt_to_transcript.py` | Script Python que convierte subtítulos VTT en transcripciones etiquetadas por hablante |
+| `subtitles/ada-colau.es.vtt` | Subtítulos originales — entrevista con Ada Colau |
 | `subtitles/santiago-abascal.es.vtt` | Subtítulos originales — entrevista con Santiago Abascal |
 | `subtitles/pedro-sanchez.es.vtt` | Subtítulos originales — entrevista con Pedro Sánchez |
 | `subtitles/rufian-montero.es.vtt` | Subtítulos originales — entrevista con Gabriel Rufián e Irene Montero |
@@ -76,7 +76,7 @@ El informe contiene:
 
 ### Paso 1 — Descarga de subtítulos con `yt-dlp`
 
-Los vídeos están alojados en la plataforma de RTVE (`rtve.es/play`). RTVE publica subtítulos oficiales en formato [WebVTT](https://www.w3.org/TR/webvtt1/) para cumplir con los requisitos de accesibilidad de la televisión pública.
+Los canales de televisión publican subtítulos oficiales en formato [WebVTT](https://www.w3.org/TR/webvtt1/) para cumplir con los requisitos de accesibilidad.
 
 Usamos [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) para descargar únicamente el archivo de subtítulos en español, sin descargar el vídeo:
 
@@ -103,9 +103,9 @@ python3 vtt_to_transcript.py <archivo.es.vtt> --guest "Nombre del Invitado"
 
 ---
 
-## Sistema de colores en los subtítulos de RTVE
+## Sistema de colores en los subtítulos VTT
 
-El hallazgo clave del que depende todo el proceso es que **RTVE codifica la identidad del hablante mediante el color de las etiquetas CSS en el VTT**. Es una convención estándar de la subtitulación televisiva para facilitar la lectura en pantalla.
+El hallazgo clave del que depende todo el proceso es que **los subtítulos VTT codifican la identidad del hablante mediante el color de las etiquetas CSS**. Es una convención estándar de la subtitulación televisiva para facilitar la lectura en pantalla.
 
 El programa usa el siguiente esquema de colores:
 
@@ -159,7 +159,7 @@ Al final del episodio (a partir del turno 577), la actriz Candela Peña se une e
 
 ### Entrevista con Gabriel Rufián e Irene Montero — dos invitados sin color
 
-Ambos políticos comparten episodio y, al igual que cualquier invitado único, sus líneas aparecen sin etiqueta de color en el VTT. RTVE no les asigna colores diferenciados.
+Ambos políticos comparten episodio y, al igual que cualquier invitado único, sus líneas aparecen sin etiqueta de color en el VTT. El canal no les asigna colores diferenciados.
 
 **Decisión:** dado que es imposible distinguir automáticamente quién habla en cada línea sin color, todas las intervenciones del invitado se etiquetan como `[Rufián / Montero]`, indicando que la línea pertenece a uno de los dos sin poder precisar cuál.
 
@@ -178,7 +178,7 @@ Además, al final del episodio aparecen los raperos Fernando Costa y Dollar Selm
 
 ## Uso del script con otros episodios
 
-El script es reutilizable con cualquier programa de RTVE con el mismo esquema de colores:
+El script es reutilizable con cualquier programa que use el mismo esquema de colores VTT:
 
 ```bash
 # 1. Descargar subtítulos
@@ -197,4 +197,4 @@ python3 vtt_to_transcript.py <nombre>.es.vtt --guest "Invitado 1 / Invitado 2"
 
 ## Fuente
 
-Los vídeos y subtítulos son propiedad de [RTVE](https://www.rtve.es) y se encuentran disponibles públicamente en su plataforma de vídeo a la carta. Este repositorio contiene únicamente las transcripciones derivadas para fines de análisis e investigación.
+Los vídeos y subtítulos son propiedad de sus respectivos canales y están disponibles públicamente en sus plataformas de emisión. Este repositorio contiene únicamente las transcripciones derivadas para fines de análisis e investigación.

@@ -1,6 +1,6 @@
 # Nov-29 Elections · Political Interview Transcripts
 
-Speaker-labeled transcripts of four political interviews broadcast on RTVE ahead of the Spanish general elections on November 29, 2026.
+Speaker-labeled transcripts of four political interviews broadcast on television ahead of the Spanish general elections on November 29, 2026.
 
 ---
 
@@ -8,8 +8,8 @@ Speaker-labeled transcripts of four political interviews broadcast on RTVE ahead
 
 | File | Description |
 |---|---|
-| `vtt_to_transcript.py` | Python script that converts RTVE VTT subtitles into speaker-labeled transcripts |
-| `subtitles/ada-colau.es.vtt` | Original subtitles downloaded from RTVE — interview with Ada Colau |
+| `vtt_to_transcript.py` | Python script that converts VTT subtitles into speaker-labeled transcripts |
+| `subtitles/ada-colau.es.vtt` | Original subtitles — interview with Ada Colau |
 | `subtitles/santiago-abascal.es.vtt` | Original subtitles — interview with Santiago Abascal |
 | `subtitles/pedro-sanchez.es.vtt` | Original subtitles — interview with Pedro Sánchez |
 | `subtitles/rufian-montero.es.vtt` | Original subtitles — interview with Gabriel Rufián and Irene Montero |
@@ -76,16 +76,7 @@ The report contains:
 
 ### Step 1 — Downloading subtitles with `yt-dlp`
 
-The videos are hosted on the RTVE platform (`rtve.es/play`). As a public broadcaster, RTVE publishes official subtitles in [WebVTT](https://www.w3.org/TR/webvtt1/) format to comply with accessibility requirements.
-
-The four episodes used are:
-
-| Guest | URL |
-|---|---|
-| Ada Colau | https://www.rtve.es/play/videos/la-revuelta/programa-10-11-26-ada-colau/17308865/ |
-| Santiago Abascal | https://www.rtve.es/play/videos/la-revuelta/programa-09-11-26-santiago-abascal/17306884/ |
-| Pedro Sánchez | https://www.rtve.es/play/videos/la-revuelta/programa-22-10-2026-pedro-sanchez/17279095/ |
-| Gabriel Rufián and Irene Montero | https://www.rtve.es/play/videos/la-revuelta/programa-27-10-2026-gabriel-rufian-irene-montero-fernandocosta-dollar-selmouni/17286287/ |
+Television broadcasters publish official subtitles in [WebVTT](https://www.w3.org/TR/webvtt1/) format to comply with accessibility requirements.
 
 We used [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) to download only the Spanish subtitle file, without downloading the video:
 
@@ -112,9 +103,9 @@ python3 vtt_to_transcript.py <file.es.vtt> --guest "Guest Full Name"
 
 ---
 
-## RTVE Subtitle Color System
+## VTT Subtitle Color System
 
-The key insight the entire process depends on is that **RTVE encodes speaker identity through CSS color tags in the VTT file**. This is a standard television subtitling convention to aid on-screen readability.
+The key insight the entire process depends on is that **VTT files encode speaker identity through CSS color tags**. This is a standard television subtitling convention to aid on-screen readability.
 
 The programme uses the following color scheme:
 
@@ -168,7 +159,7 @@ Towards the end of the episode (from turn 577 onwards), actress Candela Peña jo
 
 ### Gabriel Rufián and Irene Montero interview — two uncolored guests
 
-Both politicians share the episode and, like any single guest, their lines appear without a color tag in the VTT. RTVE does not assign them different colors.
+Both politicians share the episode and, like any single guest, their lines appear without a color tag in the VTT. The broadcaster does not assign them different colors.
 
 **Decision:** since it is impossible to automatically distinguish who is speaking in each uncolored line, all guest turns are labeled `[Rufián / Montero]`, indicating that the line belongs to one of the two without being able to specify which.
 
@@ -187,7 +178,7 @@ Additionally, rappers Fernando Costa and Dollar Selmouni (authors of the show's 
 
 ## Using the Script with Other Episodes
 
-The script is reusable with any RTVE programme with the same color scheme:
+The script is reusable with any programme that uses the same VTT color scheme:
 
 ```bash
 # 1. Download subtitles
@@ -206,4 +197,4 @@ python3 vtt_to_transcript.py <name>.es.vtt --guest "Guest 1 / Guest 2"
 
 ## Source
 
-The videos and subtitles are the property of [RTVE](https://www.rtve.es) and are publicly available on their video-on-demand platform. This repository contains only the derived transcripts for analysis and research purposes.
+The videos and subtitles are the property of their respective broadcasters and are publicly available on their platforms. This repository contains only the derived transcripts for analysis and research purposes.
