@@ -9,14 +9,66 @@ Speaker-labeled transcripts of four political interviews broadcast on **La Revue
 | File | Description |
 |---|---|
 | `vtt_to_transcript.py` | Python script that converts RTVE VTT subtitles into speaker-labeled transcripts |
-| `ada-colau.es.vtt` | Original subtitles downloaded from RTVE — interview with Ada Colau |
-| `santiago-abascal.es.vtt` | Original subtitles — interview with Santiago Abascal |
-| `pedro-sanchez.es.vtt` | Original subtitles — interview with Pedro Sánchez |
-| `rufian-montero.es.vtt` | Original subtitles — interview with Gabriel Rufián and Irene Montero |
-| `ada-colau-transcript.txt` | Clean transcript with identified speakers |
-| `santiago-abascal-transcript.txt` | Clean transcript with identified speakers |
-| `pedro-sanchez-transcript.txt` | Clean transcript with identified speakers |
-| `rufian-montero-transcript.txt` | Clean transcript with identified speakers |
+| `subtitles/ada-colau.es.vtt` | Original subtitles downloaded from RTVE — interview with Ada Colau |
+| `subtitles/santiago-abascal.es.vtt` | Original subtitles — interview with Santiago Abascal |
+| `subtitles/pedro-sanchez.es.vtt` | Original subtitles — interview with Pedro Sánchez |
+| `subtitles/rufian-montero.es.vtt` | Original subtitles — interview with Gabriel Rufián and Irene Montero |
+| `transcripts/ada-colau-transcript.txt` | Clean transcript with identified speakers |
+| `transcripts/santiago-abascal-transcript.txt` | Clean transcript with identified speakers |
+| `transcripts/pedro-sanchez-transcript.txt` | Clean transcript with identified speakers |
+| `transcripts/rufian-montero-transcript.txt` | Clean transcript with identified speakers |
+| `.claude/skills/build-political-profile/` | Claude Code skill to build a personalised political assessment profile |
+| `.claude/skills/assess-candidates/` | Claude Code skill to score candidates against a saved profile |
+
+---
+
+## Candidate Analysis with Claude Code
+
+This repository includes two [Claude Code](https://claude.ai/code) skills that let you assess candidates against your own political values: first you build a personal profile (which topics matter to you and what stance you are looking for), then the system reads the transcripts and scores each candidate against that profile.
+
+**Requirement:** Claude Code installed (`npm install -g @anthropic-ai/claude-code`).
+
+### Step 1 — Build your political profile
+
+```
+/build-political-profile Your Name
+```
+
+The skill runs a structured interview around 16 topics extracted directly from the transcripts (housing, immigration, climate and energy, territorial question, etc.). For each topic you select, it asks:
+
+- **Importance (1–10):** how much weight this topic carries for you.
+- **Position:** what stance you are looking for in a candidate, in your own words.
+- **Firmness (1–5):** whether this is a preference (1) or a dealbreaker (5).
+
+After the predefined topics you can add any topic not on the list. The profile is saved to:
+
+```
+political-profiles/{your-name}/pp-{your-name}.json
+```
+
+> This folder is in `.gitignore` — your criteria are private and never pushed to the repository.
+
+If a profile already exists for that name, the skill will ask whether you want to rebuild it from scratch or edit specific criteria.
+
+### Step 2 — Score the candidates
+
+```
+/assess-candidates {your-name}
+```
+
+The skill loads your profile and reads all transcripts in `transcripts/`. For each candidate and each criterion you chose, it assigns a score from **-5 to +5** (0 means the topic was not addressed in the interview) and includes a direct quote from the transcript to justify the score.
+
+The resulting report is saved to:
+
+```
+political-profiles/{your-name}/assessment-{your-name}-{date}.md
+```
+
+The report contains:
+
+1. **Best candidate** — who fits your profile best and why.
+2. **Comparison table** — rows by topic, columns by candidate, weighted total score.
+3. **Per-candidate analysis** — a summary paragraph and supporting quotes for each candidate.
 
 ---
 

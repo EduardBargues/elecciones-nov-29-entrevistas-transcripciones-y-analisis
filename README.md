@@ -1,7 +1,5 @@
 # Elecciones 29-N · Transcripciones de entrevistas en La Revuelta
 
-> 🇬🇧 An English version of this document is available: [README.english.md](README.english.md)
-
 Transcripciones con identificación de hablante de cuatro entrevistas políticas emitidas en **La Revuelta** (RTVE) antes de las elecciones generales del 29 de noviembre de 2026.
 
 ---
@@ -11,14 +9,66 @@ Transcripciones con identificación de hablante de cuatro entrevistas políticas
 | Archivo | Descripción |
 |---|---|
 | `vtt_to_transcript.py` | Script Python que convierte subtítulos VTT de RTVE en transcripciones etiquetadas por hablante |
-| `ada-colau.es.vtt` | Subtítulos originales descargados de RTVE — entrevista con Ada Colau |
-| `santiago-abascal.es.vtt` | Subtítulos originales — entrevista con Santiago Abascal |
-| `pedro-sanchez.es.vtt` | Subtítulos originales — entrevista con Pedro Sánchez |
-| `rufian-montero.es.vtt` | Subtítulos originales — entrevista con Gabriel Rufián e Irene Montero |
-| `ada-colau-transcript.txt` | Transcripción limpia con hablantes identificados |
-| `santiago-abascal-transcript.txt` | Transcripción limpia con hablantes identificados |
-| `pedro-sanchez-transcript.txt` | Transcripción limpia con hablantes identificados |
-| `rufian-montero-transcript.txt` | Transcripción limpia con hablantes identificados |
+| `subtitles/ada-colau.es.vtt` | Subtítulos originales descargados de RTVE — entrevista con Ada Colau |
+| `subtitles/santiago-abascal.es.vtt` | Subtítulos originales — entrevista con Santiago Abascal |
+| `subtitles/pedro-sanchez.es.vtt` | Subtítulos originales — entrevista con Pedro Sánchez |
+| `subtitles/rufian-montero.es.vtt` | Subtítulos originales — entrevista con Gabriel Rufián e Irene Montero |
+| `transcripts/ada-colau-transcript.txt` | Transcripción limpia con hablantes identificados |
+| `transcripts/santiago-abascal-transcript.txt` | Transcripción limpia con hablantes identificados |
+| `transcripts/pedro-sanchez-transcript.txt` | Transcripción limpia con hablantes identificados |
+| `transcripts/rufian-montero-transcript.txt` | Transcripción limpia con hablantes identificados |
+| `.claude/skills/build-political-profile/` | Skill de Claude Code para construir un perfil político personalizado |
+| `.claude/skills/assess-candidates/` | Skill de Claude Code para puntuar candidatos contra un perfil guardado |
+
+---
+
+## Análisis de candidatos con Claude Code
+
+Este repositorio incluye dos skills de [Claude Code](https://claude.ai/code) que permiten evaluar a los candidatos de forma personalizada: primero construyes tu propio perfil político (qué temas te importan y qué postura buscas), y después el sistema lee las transcripciones y puntúa a cada candidato contra ese perfil.
+
+**Requisito:** tener Claude Code instalado (`npm install -g @anthropic-ai/claude-code`).
+
+### Paso 1 — Construir tu perfil político
+
+```
+/build-political-profile Tu Nombre
+```
+
+El skill te hace una entrevista estructurada en torno a 16 temas extraídos directamente de las transcripciones (vivienda, inmigración, cambio climático, cuestión territorial, etc.). Para cada tema que selecciones, te pregunta:
+
+- **Importancia (1–10):** cuánto peso tiene este tema para ti.
+- **Posición:** qué postura buscas en un candidato, con tus propias palabras.
+- **Firmeza (1–5):** si es un deseo (1) o una línea roja (5).
+
+Al terminar puedes añadir temas propios que no estén en la lista. El perfil se guarda en:
+
+```
+political-profiles/{tu-nombre}/pp-{tu-nombre}.json
+```
+
+> Esta carpeta está en `.gitignore` — tus criterios son privados y nunca se suben al repositorio.
+
+Si ya tienes un perfil guardado, el skill te preguntará si quieres reconstruirlo desde cero o editar criterios concretos.
+
+### Paso 2 — Puntuar a los candidatos
+
+```
+/assess-candidates {tu-nombre}
+```
+
+El skill lee tu perfil y todas las transcripciones en `transcripts/`. Para cada candidato y cada criterio que seleccionaste, asigna una puntuación de **-5 a +5** (donde 0 significa que el tema no fue abordado en la entrevista) e incluye una cita directa de la transcripción que justifica la puntuación.
+
+El informe resultante se guarda en:
+
+```
+political-profiles/{tu-nombre}/assessment-{tu-nombre}-{fecha}.md
+```
+
+El informe contiene:
+
+1. **Mejor candidato/a** — quién encaja mejor con tu perfil y por qué.
+2. **Tabla comparativa** — filas por tema, columnas por candidato, puntuación ponderada final.
+3. **Análisis por candidato** — párrafo de valoración y citas relevantes para cada uno.
 
 ---
 
@@ -27,15 +77,6 @@ Transcripciones con identificación de hablante de cuatro entrevistas políticas
 ### Paso 1 — Descarga de subtítulos con `yt-dlp`
 
 Los vídeos de La Revuelta están alojados en la plataforma de RTVE (`rtve.es/play`). RTVE publica subtítulos oficiales en formato [WebVTT](https://www.w3.org/TR/webvtt1/) para cumplir con los requisitos de accesibilidad de la televisión pública.
-
-Los cuatro episodios utilizados son:
-
-| Invitado | URL |
-|---|---|
-| Ada Colau | https://www.rtve.es/play/videos/la-revuelta/programa-10-11-26-ada-colau/17308865/ |
-| Santiago Abascal | https://www.rtve.es/play/videos/la-revuelta/programa-09-11-26-santiago-abascal/17306884/ |
-| Pedro Sánchez | https://www.rtve.es/play/videos/la-revuelta/programa-22-10-2026-pedro-sanchez/17279095/ |
-| Gabriel Rufián e Irene Montero | https://www.rtve.es/play/videos/la-revuelta/programa-27-10-2026-gabriel-rufian-irene-montero-fernandocosta-dollar-selmouni/17286287/ |
 
 Usamos [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) para descargar únicamente el archivo de subtítulos en español, sin descargar el vídeo:
 
