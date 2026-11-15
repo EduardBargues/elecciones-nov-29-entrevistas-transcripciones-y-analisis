@@ -212,7 +212,7 @@ def main():
         print(f"Error: file not found: {input_path}", file=sys.stderr)
         sys.exit(1)
 
-    output_path = args.output or str(input_path.with_suffix("").with_suffix("")) + "-transcript.txt"
+    output_path = args.output or input_path.with_suffix("").stem + "-transcript.txt"
 
     entries = parse_vtt(input_path, guest_name=args.guest, guest2_name=args.guest2)
     turns = merge_consecutive(entries, guest_name=args.guest, guest2_name=args.guest2)
