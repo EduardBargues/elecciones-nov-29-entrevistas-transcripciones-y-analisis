@@ -1,6 +1,6 @@
-# Elecciones 29-N · Transcripciones de entrevistas en La Revuelta
+# Elecciones 29-N · Transcripciones de entrevistas políticas
 
-Transcripciones con identificación de hablante de cuatro entrevistas políticas emitidas en **La Revuelta** (RTVE) antes de las elecciones generales del 29 de noviembre de 2026.
+Transcripciones con identificación de hablante de cuatro entrevistas políticas emitidas en RTVE antes de las elecciones generales del 29 de noviembre de 2026.
 
 ---
 
@@ -76,7 +76,7 @@ El informe contiene:
 
 ### Paso 1 — Descarga de subtítulos con `yt-dlp`
 
-Los vídeos de La Revuelta están alojados en la plataforma de RTVE (`rtve.es/play`). RTVE publica subtítulos oficiales en formato [WebVTT](https://www.w3.org/TR/webvtt1/) para cumplir con los requisitos de accesibilidad de la televisión pública.
+Los vídeos están alojados en la plataforma de RTVE (`rtve.es/play`). RTVE publica subtítulos oficiales en formato [WebVTT](https://www.w3.org/TR/webvtt1/) para cumplir con los requisitos de accesibilidad de la televisión pública.
 
 Usamos [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) para descargar únicamente el archivo de subtítulos en español, sin descargar el vídeo:
 
@@ -107,7 +107,7 @@ python3 vtt_to_transcript.py <archivo.es.vtt> --guest "Nombre del Invitado"
 
 El hallazgo clave del que depende todo el proceso es que **RTVE codifica la identidad del hablante mediante el color de las etiquetas CSS en el VTT**. Es una convención estándar de la subtitulación televisiva para facilitar la lectura en pantalla.
 
-La Revuelta usa el siguiente esquema de colores:
+El programa usa el siguiente esquema de colores:
 
 | Etiqueta VTT | Hablante |
 |---|---|
@@ -132,7 +132,7 @@ La línea sin color es el invitado; la amarilla es Broncano.
 
 ## Detección automática del inicio de la entrevista
 
-Cada episodio de La Revuelta tiene una parte inicial en la que Broncano habla con su equipo, con el público o con colaboradores antes de presentar al invitado. Durante esa fase previa, las líneas **sin color no pertenecen al invitado** sino a otras personas en plató.
+Cada episodio tiene una parte inicial en la que Broncano habla con su equipo, con el público o con colaboradores antes de presentar al invitado. Durante esa fase previa, las líneas **sin color no pertenecen al invitado** sino a otras personas en plató.
 
 Para no atribuir esas líneas al invitado, el script detecta automáticamente el momento en que comienza la entrevista:
 
@@ -178,7 +178,7 @@ Además, al final del episodio aparecen los raperos Fernando Costa y Dollar Selm
 
 ## Uso del script con otros episodios
 
-El script es reutilizable con cualquier episodio de La Revuelta (o de cualquier programa de RTVE con el mismo esquema de colores):
+El script es reutilizable con cualquier programa de RTVE con el mismo esquema de colores:
 
 ```bash
 # 1. Descargar subtítulos

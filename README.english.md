@@ -1,6 +1,6 @@
-# Nov-29 Elections · La Revuelta Interview Transcripts
+# Nov-29 Elections · Political Interview Transcripts
 
-Speaker-labeled transcripts of four political interviews broadcast on **La Revuelta** (RTVE) ahead of the Spanish general elections on November 29, 2026.
+Speaker-labeled transcripts of four political interviews broadcast on RTVE ahead of the Spanish general elections on November 29, 2026.
 
 ---
 
@@ -76,7 +76,7 @@ The report contains:
 
 ### Step 1 — Downloading subtitles with `yt-dlp`
 
-La Revuelta videos are hosted on the RTVE platform (`rtve.es/play`). As a public broadcaster, RTVE publishes official subtitles in [WebVTT](https://www.w3.org/TR/webvtt1/) format to comply with accessibility requirements.
+The videos are hosted on the RTVE platform (`rtve.es/play`). As a public broadcaster, RTVE publishes official subtitles in [WebVTT](https://www.w3.org/TR/webvtt1/) format to comply with accessibility requirements.
 
 The four episodes used are:
 
@@ -116,7 +116,7 @@ python3 vtt_to_transcript.py <file.es.vtt> --guest "Guest Full Name"
 
 The key insight the entire process depends on is that **RTVE encodes speaker identity through CSS color tags in the VTT file**. This is a standard television subtitling convention to aid on-screen readability.
 
-La Revuelta uses the following color scheme:
+The programme uses the following color scheme:
 
 | VTT Tag | Speaker |
 |---|---|
@@ -141,7 +141,7 @@ The uncolored line is the guest; the yellow line is Broncano.
 
 ## Automatic Interview Start Detection
 
-Each La Revuelta episode has an opening segment in which Broncano talks with his team, the audience, or collaborators before introducing the guest. During that pre-interview phase, **uncolored lines do not belong to the guest** but to other people on set.
+Each episode has an opening segment in which Broncano talks with his team, the audience, or collaborators before introducing the guest. During that pre-interview phase, **uncolored lines do not belong to the guest** but to other people on set.
 
 To avoid attributing those lines to the guest, the script automatically detects when the interview begins:
 
@@ -187,7 +187,7 @@ Additionally, rappers Fernando Costa and Dollar Selmouni (authors of the show's 
 
 ## Using the Script with Other Episodes
 
-The script is reusable with any La Revuelta episode (or any RTVE programme with the same color scheme):
+The script is reusable with any RTVE programme with the same color scheme:
 
 ```bash
 # 1. Download subtitles
