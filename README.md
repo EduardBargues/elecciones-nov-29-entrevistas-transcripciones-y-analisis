@@ -8,7 +8,8 @@ Transcripciones con identificación de hablante de cuatro entrevistas políticas
 
 | Archivo | Descripción |
 |---|---|
-| `vtt_to_transcript.py` | Script Python que convierte subtítulos VTT en transcripciones etiquetadas por hablante |
+| `rtve_vtt_to_transcript.py` | Script Python para subtítulos VTT de RTVE (identificación de hablante por color CSS) |
+| `youtube_vtt_to_transcript.py` | Script Python para subtítulos VTT de YouTube (limpieza y deduplicación del formato karaoke) |
 | `subtitles/ada-colau.es.vtt` | Subtítulos originales — entrevista con Ada Colau |
 | `subtitles/santiago-abascal.es.vtt` | Subtítulos originales — entrevista con Santiago Abascal |
 | `subtitles/pedro-sanchez.es.vtt` | Subtítulos originales — entrevista con Pedro Sánchez |
@@ -95,19 +96,30 @@ yt-dlp --write-subs --skip-download --sub-langs "es" -o "<nombre>" "<URL_DEL_EPI
 
 Esto genera un archivo `.es.vtt` con los subtítulos completos del episodio.
 
-### Paso 2 — Procesado del VTT con `vtt_to_transcript.py`
+### Paso 2 — Procesado del VTT
 
-El formato VTT crudo contiene marcas de tiempo, etiquetas de color HTML y líneas duplicadas que hay que limpiar. El script hace lo siguiente:
+El script a usar depende de la plataforma de origen del vídeo.
 
-1. **Parsea los bloques VTT** extrayendo texto y marcas de tiempo de cada bloque de subtítulo.
-2. **Detecta el inicio de la entrevista** automáticamente.
+#### Entrevistas de RTVE — `rtve_vtt_to_transcript.py`
+
+Los VTT de RTVE codifican al hablante mediante etiquetas de color CSS. El script las usa para clasificar cada línea automáticamente, sin necesidad de IA.
+
+1. **Parsea los bloques VTT** extrayendo texto y marcas de tiempo.
+2. **Detecta el inicio de la entrevista** automáticamente (primera mención del invitado en texto amarillo).
 3. **Clasifica cada línea** por hablante según las etiquetas de color.
-4. **Fusiona líneas consecutivas** del mismo hablante en un único turno de palabra.
-5. **Elimina duplicados** consecutivos idénticos (artefacto habitual en subtítulos de streaming HLS).
-6. **Escribe la transcripción** en un archivo `.txt` con el formato `[Hablante] Texto`.
+4. **Fusiona y deduplica** turnos consecutivos del mismo hablante.
+5. **Escribe la transcripción** en formato `[Hablante] Texto`.
 
 ```bash
-python3 vtt_to_transcript.py <archivo.es.vtt> --guest "Nombre del Invitado"
+python3 rtve_vtt_to_transcript.py <archivo.es.vtt> --guest "Nombre del Invitado"
+```
+
+#### Entrevistas de YouTube — `youtube_vtt_to_transcript.py`
+
+Los VTT de YouTube son subtítulos generados automáticamente en formato karaoke rodante, sin información de hablante. El script elimina las etiquetas de tiempo palabra a palabra, deduplica las líneas repetidas y escribe el texto limpio en un archivo plano.
+
+```bash
+python3 youtube_vtt_to_transcript.py <archivo.es.vtt>
 ```
 
 ---
@@ -187,17 +199,20 @@ Además, al final del episodio aparecen los raperos Fernando Costa y Dollar Selm
 
 ## Uso del script con otros episodios
 
-El script es reutilizable con cualquier programa que use el mismo esquema de colores VTT:
+Ambos scripts son reutilizables con cualquier entrevista que use el mismo formato de subtítulos.
 
 ```bash
 # 1. Descargar subtítulos
-yt-dlp --write-subs --skip-download --sub-langs "es" -o "<nombre>" "<URL>"
+yt-dlp --write-subs --write-auto-subs --skip-download --sub-langs "es" -o "<nombre>" "<URL>"
 
-# 2. Generar transcripción
-python3 vtt_to_transcript.py <nombre>.es.vtt --guest "Nombre Completo"
+# 2a. Para vídeos de RTVE
+python3 rtve_vtt_to_transcript.py <nombre>.es.vtt --guest "Nombre Completo"
 
-# Con dos invitados (etiqueta combinada)
-python3 vtt_to_transcript.py <nombre>.es.vtt --guest "Invitado 1 / Invitado 2"
+# 2b. Para vídeos de YouTube
+python3 youtube_vtt_to_transcript.py <nombre>.es.vtt --guest "Nombre Completo" --host "Nombre del Presentador"
+
+# Con dos invitados (solo RTVE)
+python3 rtve_vtt_to_transcript.py <nombre>.es.vtt --guest "Invitado 1 / Invitado 2"
 ```
 
 **Requisitos:** Python 3.8+ y `yt-dlp` (`brew install yt-dlp` en macOS).
