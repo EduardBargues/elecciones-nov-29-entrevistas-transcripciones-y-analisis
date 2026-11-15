@@ -1,5 +1,7 @@
 # Elecciones 29-N · Transcripciones de entrevistas en La Revuelta
 
+> 🇬🇧 An English version of this document is available: [README.english.md](README.english.md)
+
 Transcripciones con identificación de hablante de cuatro entrevistas políticas emitidas en **La Revuelta** (RTVE) antes de las elecciones generales del 29 de noviembre de 2026.
 
 ---
