@@ -78,6 +78,15 @@ The report contains:
 
 Television broadcasters publish official subtitles in [WebVTT](https://www.w3.org/TR/webvtt1/) format to comply with accessibility requirements.
 
+The four episodes used are:
+
+| Guest | URL |
+|---|---|
+| Ada Colau | https://www.rtve.es/play/videos/la-revuelta/programa-10-11-26-ada-colau/17308865/ |
+| Santiago Abascal | https://www.rtve.es/play/videos/la-revuelta/programa-09-11-26-santiago-abascal/17306884/ |
+| Pedro Sánchez | https://www.rtve.es/play/videos/la-revuelta/programa-22-10-2026-pedro-sanchez/17279095/ |
+| Gabriel Rufián and Irene Montero | https://www.rtve.es/play/videos/la-revuelta/programa-27-10-2026-gabriel-rufian-irene-montero-fernandocosta-dollar-selmouni/17286287/ |
+
 We used [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) to download only the Spanish subtitle file, without downloading the video:
 
 ```bash
