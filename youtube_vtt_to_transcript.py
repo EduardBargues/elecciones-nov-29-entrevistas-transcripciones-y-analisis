@@ -4,10 +4,11 @@ Convert a YouTube auto-generated VTT subtitle file into clean plain text.
 
 YouTube auto-captions use a rolling karaoke format: each block repeats the
 previous line fully formed and adds new words being timed in. This script
-strips all timing tags, deduplicates the rolling lines, and writes clean text.
+strips all timing tags, deduplicates the rolling lines, and joins the
+caption fragments into full sentences grouped into paragraphs.
 
 Usage:
-  python3 youtube_vtt_to_transcript.py <input.vtt> [output.txt]
+  python3 youtube_vtt_to_transcript.py <input.vtt> [output.txt] [--paragraph-size N]
 
 Requirements:
   Python 3.8+
@@ -20,6 +21,7 @@ from pathlib import Path
 
 TAG_RE = re.compile(r"<[^>]+>")
 TIMESTAMP_LINE_RE = re.compile(r"^\d{2}:\d{2}:\d{2}[\.,]\d+")
+SENTENCE_BOUNDARY_RE = re.compile(r'(?<=[.!?])\s+(?=[¿¡«"À-ɏA-Z])')
 
 
 def parse_args():
@@ -28,6 +30,8 @@ def parse_args():
     )
     parser.add_argument("input", help="Input .vtt file")
     parser.add_argument("output", nargs="?", help="Output .txt file (default: <stem>-transcript.txt)")
+    parser.add_argument("--paragraph-size", type=int, default=4,
+                        help="Number of sentences per paragraph (default: 4)")
     return parser.parse_args()
 
 
@@ -75,6 +79,18 @@ def extract_clean_lines(vtt_content):
     return result
 
 
+def join_into_paragraphs(lines, paragraph_size):
+    """Join caption-width fragments into sentences, then group into paragraphs."""
+    full_text = " ".join(lines)
+    sentences = [s.strip() for s in SENTENCE_BOUNDARY_RE.split(full_text) if s.strip()]
+
+    paragraphs = []
+    for i in range(0, len(sentences), paragraph_size):
+        paragraphs.append(" ".join(sentences[i:i + paragraph_size]))
+
+    return paragraphs
+
+
 def main():
     args = parse_args()
 
@@ -93,7 +109,10 @@ def main():
     clean_lines = extract_clean_lines(content)
     print(f"Extracted {len(clean_lines)} unique lines")
 
-    Path(output_path).write_text("\n".join(clean_lines) + "\n", encoding="utf-8")
+    paragraphs = join_into_paragraphs(clean_lines, args.paragraph_size)
+    print(f"Joined into {len(paragraphs)} paragraphs ({args.paragraph_size} sentences each)")
+
+    Path(output_path).write_text("\n\n".join(paragraphs) + "\n", encoding="utf-8")
     print(f"Transcript written to: {output_path}")
 
 
