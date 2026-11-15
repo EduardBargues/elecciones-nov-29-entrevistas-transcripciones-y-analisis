@@ -1,0 +1,157 @@
+# Nov-29 Elections · La Revuelta Interview Transcripts
+
+Speaker-labeled transcripts of four political interviews broadcast on **La Revuelta** (RTVE) ahead of the Spanish general elections on November 29, 2026.
+
+---
+
+## Repository Contents
+
+| File | Description |
+|---|---|
+| `vtt_to_transcript.py` | Python script that converts RTVE VTT subtitles into speaker-labeled transcripts |
+| `ada-colau.es.vtt` | Original subtitles downloaded from RTVE — interview with Ada Colau |
+| `santiago-abascal.es.vtt` | Original subtitles — interview with Santiago Abascal |
+| `pedro-sanchez.es.vtt` | Original subtitles — interview with Pedro Sánchez |
+| `rufian-montero.es.vtt` | Original subtitles — interview with Gabriel Rufián and Irene Montero |
+| `ada-colau-transcript.txt` | Clean transcript with identified speakers |
+| `santiago-abascal-transcript.txt` | Clean transcript with identified speakers |
+| `pedro-sanchez-transcript.txt` | Clean transcript with identified speakers |
+| `rufian-montero-transcript.txt` | Clean transcript with identified speakers |
+
+---
+
+## Methodology
+
+### Step 1 — Downloading subtitles with `yt-dlp`
+
+La Revuelta videos are hosted on the RTVE platform (`rtve.es/play`). As a public broadcaster, RTVE publishes official subtitles in [WebVTT](https://www.w3.org/TR/webvtt1/) format to comply with accessibility requirements.
+
+The four episodes used are:
+
+| Guest | URL |
+|---|---|
+| Ada Colau | https://www.rtve.es/play/videos/la-revuelta/programa-10-11-26-ada-colau/17308865/ |
+| Santiago Abascal | https://www.rtve.es/play/videos/la-revuelta/programa-09-11-26-santiago-abascal/17306884/ |
+| Pedro Sánchez | https://www.rtve.es/play/videos/la-revuelta/programa-22-10-2026-pedro-sanchez/17279095/ |
+| Gabriel Rufián and Irene Montero | https://www.rtve.es/play/videos/la-revuelta/programa-27-10-2026-gabriel-rufian-irene-montero-fernandocosta-dollar-selmouni/17286287/ |
+
+We used [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) to download only the Spanish subtitle file, without downloading the video:
+
+```bash
+yt-dlp --write-subs --skip-download --sub-langs "es" -o "<name>" "<EPISODE_URL>"
+```
+
+This produces an `.es.vtt` file containing the full subtitles for the episode.
+
+### Step 2 — Processing the VTT with `vtt_to_transcript.py`
+
+The raw VTT format contains timestamps, HTML color tags, and duplicate lines that need to be cleaned up. The script does the following:
+
+1. **Parses VTT blocks**, extracting text and timestamps from each subtitle block.
+2. **Automatically detects the interview start.**
+3. **Classifies each line** by speaker based on color tags.
+4. **Merges consecutive lines** from the same speaker into a single turn.
+5. **Removes consecutive duplicates** (a common artifact in HLS streaming subtitles).
+6. **Writes the transcript** to a `.txt` file in `[Speaker] Text` format.
+
+```bash
+python3 vtt_to_transcript.py <file.es.vtt> --guest "Guest Full Name"
+```
+
+---
+
+## RTVE Subtitle Color System
+
+The key insight the entire process depends on is that **RTVE encodes speaker identity through CSS color tags in the VTT file**. This is a standard television subtitling convention to aid on-screen readability.
+
+La Revuelta uses the following color scheme:
+
+| VTT Tag | Speaker |
+|---|---|
+| `<c.yellow>text</c>` | David Broncano (host) |
+| `<c.green>text</c>` | Collaborator / co-host |
+| `<c.magenta>text</c>` | Collaborator / co-host |
+| *(no color tag)* | Main guest (from the interview start onwards) |
+
+Example of a raw VTT block:
+
+```
+00:36:49.788 --> 00:36:51.291 line:77%
+No sabía si sacar el tema o no.
+
+00:36:51.292 --> 00:36:52.316 line:77%
+<c.yellow>Puedes sacarlo.</c>
+```
+
+The uncolored line is the guest; the yellow line is Broncano.
+
+---
+
+## Automatic Interview Start Detection
+
+Each La Revuelta episode has an opening segment in which Broncano talks with his team, the audience, or collaborators before introducing the guest. During that pre-interview phase, **uncolored lines do not belong to the guest** but to other people on set.
+
+To avoid attributing those lines to the guest, the script automatically detects when the interview begins:
+
+> It searches for the first yellow text block (Broncano) that contains the guest's name as a whole word (using `\b` word boundaries to avoid partial matches, such as «ada» inside «nada»).
+
+The timestamp of that block is used as a **cutoff**: all uncolored lines before that moment are discarded, and those after it are attributed to the guest.
+
+```
+Interview start detected at 00:24:08  ← Ada Colau
+Interview start detected at 00:06:53  ← Santiago Abascal
+Interview start detected at 00:04:44  ← Pedro Sánchez
+Interview start detected at 00:04:56  ← Rufián / Montero
+```
+
+---
+
+## Special Cases and Decisions
+
+### Pedro Sánchez interview — Candela Peña's appearance
+
+Towards the end of the episode (from turn 577 onwards), actress Candela Peña joins Broncano and Pedro Sánchez on set for an informal segment. Since she also speaks without a color tag, her lines would be incorrectly attributed to Sánchez.
+
+**Decision:** the transcript is truncated at turn 576, just before Broncano introduces her. The segment with Candela Peña is not politically relevant for analysis and is discarded.
+
+### Gabriel Rufián and Irene Montero interview — two uncolored guests
+
+Both politicians share the episode and, like any single guest, their lines appear without a color tag in the VTT. RTVE does not assign them different colors.
+
+**Decision:** since it is impossible to automatically distinguish who is speaking in each uncolored line, all guest turns are labeled `[Rufián / Montero]`, indicating that the line belongs to one of the two without being able to specify which.
+
+Additionally, rappers Fernando Costa and Dollar Selmouni (authors of the show's theme song) appear at the end of the episode. The transcript is truncated before their introduction (turn 473) for the same reason as with Candela Peña.
+
+---
+
+## Known Limitations
+
+- **Residual stage directions:** some parenthetical labels such as `(PÚBLICO)` or `(ININTELIGIBLE)` appear mixed with real speech in the same VTT block, so the stage direction filter does not remove them completely.
+- **Mixed turns:** during moments of simultaneous multiple speech, several voices appear in the same uncolored block and the script groups them under the same active speaker.
+- **Interview start heuristic:** detection relies on the first mention of the guest's name in yellow text. If the name appears earlier in a different context (e.g. a reference to a previous interview), the cutoff could be set too early.
+- **Unnamed collaborators:** green and magenta lines are generically labeled `[Colaborador]` without identifying which team member they belong to.
+
+---
+
+## Using the Script with Other Episodes
+
+The script is reusable with any La Revuelta episode (or any RTVE programme with the same color scheme):
+
+```bash
+# 1. Download subtitles
+yt-dlp --write-subs --skip-download --sub-langs "es" -o "<name>" "<URL>"
+
+# 2. Generate transcript
+python3 vtt_to_transcript.py <name>.es.vtt --guest "Full Name"
+
+# With two guests (combined label)
+python3 vtt_to_transcript.py <name>.es.vtt --guest "Guest 1 / Guest 2"
+```
+
+**Requirements:** Python 3.8+ and `yt-dlp` (`brew install yt-dlp` on macOS).
+
+---
+
+## Source
+
+The videos and subtitles are the property of [RTVE](https://www.rtve.es) and are publicly available on their video-on-demand platform. This repository contains only the derived transcripts for analysis and research purposes.
