@@ -10,6 +10,7 @@ Speaker-labeled transcripts of four political interviews broadcast on television
 |---|---|
 | `rtve_vtt_to_transcript.py` | Python script for RTVE VTT subtitles (speaker identification via CSS colour tags) |
 | `youtube_vtt_to_transcript.py` | Python script for YouTube VTT subtitles (cleans and deduplicates the rolling karaoke format) |
+| `audio_to_transcript.py` | Python script for transcription with speaker diarisation via Whisper + pyannote (accepts YouTube URLs or local files) |
 | `subtitles/ada-colau.es.vtt` | Original subtitles — interview with Ada Colau |
 | `subtitles/santiago-abascal.es.vtt` | Original subtitles — interview with Santiago Abascal |
 | `subtitles/pedro-sanchez.es.vtt` | Original subtitles — interview with Pedro Sánchez |
@@ -214,6 +215,23 @@ python3 youtube_vtt_to_transcript.py <name>.es.vtt --guest "Full Name" --host "H
 # With two guests (RTVE only)
 python3 rtve_vtt_to_transcript.py <name>.es.vtt --guest "Guest 1 / Guest 2"
 ```
+
+#### Audio transcription — `audio_to_transcript.py`
+
+A higher-quality alternative that processes the video's audio directly. Uses **Whisper** for transcription and **pyannote.audio** for speaker attribution. Accepts both YouTube URLs and local files.
+
+**Additional requirements:**
+```bash
+brew install ffmpeg
+pip install openai-whisper pyannote.audio torch torchaudio
+```
+Also requires a Hugging Face token with pyannote model terms accepted (see instructions in the script).
+
+```bash
+python3 audio_to_transcript.py <url_or_file> [output.txt] --guest "Guest Full Name" --host "Host Full Name"
+```
+
+> On CPU, the `medium` model runs at roughly 2× realtime; `large-v3` at 4×. Safe to leave running in the background.
 
 **Requirements:** Python 3.8+ and `yt-dlp` (`brew install yt-dlp` on macOS).
 

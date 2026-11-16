@@ -10,6 +10,7 @@ Transcripciones con identificación de hablante de cuatro entrevistas políticas
 |---|---|
 | `rtve_vtt_to_transcript.py` | Script Python para subtítulos VTT de RTVE (identificación de hablante por color CSS) |
 | `youtube_vtt_to_transcript.py` | Script Python para subtítulos VTT de YouTube (limpieza y deduplicación del formato karaoke) |
+| `audio_to_transcript.py` | Script Python para transcripción con diarización de hablante vía Whisper + pyannote (funciona con URLs de YouTube o archivos locales) |
 | `subtitles/ada-colau.es.vtt` | Subtítulos originales — entrevista con Ada Colau |
 | `subtitles/santiago-abascal.es.vtt` | Subtítulos originales — entrevista con Santiago Abascal |
 | `subtitles/pedro-sanchez.es.vtt` | Subtítulos originales — entrevista con Pedro Sánchez |
@@ -214,6 +215,23 @@ python3 youtube_vtt_to_transcript.py <nombre>.es.vtt --guest "Nombre Completo" -
 # Con dos invitados (solo RTVE)
 python3 rtve_vtt_to_transcript.py <nombre>.es.vtt --guest "Invitado 1 / Invitado 2"
 ```
+
+#### Transcripción desde audio — `audio_to_transcript.py`
+
+Alternativa de mayor calidad que procesa directamente el audio del vídeo. Usa **Whisper** para la transcripción y **pyannote.audio** para identificar quién habla en cada momento. Acepta tanto URLs de YouTube como archivos locales.
+
+**Requisitos adicionales:**
+```bash
+brew install ffmpeg
+pip install openai-whisper pyannote.audio torch torchaudio
+```
+Además necesita un token de Hugging Face con los términos de pyannote aceptados (ver instrucciones en el script).
+
+```bash
+python3 audio_to_transcript.py <url_o_archivo> [output.txt] --guest "Nombre del Invitado" --host "Nombre del Presentador"
+```
+
+> En CPU, el modelo `medium` tarda aproximadamente el doble del tiempo del vídeo; `large-v3` tarda el cuádruple. Se puede dejar ejecutando en segundo plano.
 
 **Requisitos:** Python 3.8+ y `yt-dlp` (`brew install yt-dlp` en macOS).
 
