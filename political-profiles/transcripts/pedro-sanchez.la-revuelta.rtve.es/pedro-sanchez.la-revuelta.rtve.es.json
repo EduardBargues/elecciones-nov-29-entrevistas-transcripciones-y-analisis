@@ -1,0 +1,80 @@
+{
+  "candidate": "Pedro Sanchez",
+  "program": "La Revuelta",
+  "platform": "rtve",
+  "source_file": "transcripts/pedro-sanchez.la-revuelta.rtve.es.txt",
+  "topics": [
+    {
+      "topic": "Economía y empleo",
+      "position": "Sánchez defiende un balance macroeconómico positivo: 22,5 millones de trabajadores cotizando (máximo histórico de mujeres trabajando), crecimiento tres veces superior a la zona euro y una subida del salario mínimo del 66% en ocho años. Reconoce que esos datos no siempre se traducen en bienestar cotidiano, pero los atribuye al bloqueo de las autonomías del PP. Defiende que la reforma laboral, pese a aprobarse por el voto equivocado de un diputado del PP, ha reducido la temporalidad.",
+      "quotes": [
+        "España a nivel de electrificación estamos en torno al 20 % de nuestra economía... tenemos el 60 % de la generación eléctrica en nuestro país que proviene de las renovables",
+        "concentrando el 85 por ciento de la creación de empleo en la zona euro, creciendo tres veces más que la zona euro",
+        "reforma laboral donde situamos la negociación colectiva entre la patronal y los sindicatos para que acuerden una subida salarial"
+      ]
+    },
+    {
+      "topic": "Vivienda",
+      "position": "Sánchez propone dos 'pedales': construcción de vivienda asequible (en la época de crisis, solo el 5% era protegida; ahora es el 13%) y regulación del mercado. Ha presentado el real decreto ley cinco veces y se lo han tumbado la mayoría conservadora. Acusa a las comunidades del PP de bloquear y de recurrir las medidas ante el Constitucional. Defiende que la clave no es la cantidad de vivienda sino la asequibilidad y la regulación de los fondos buitre y apartamentos turísticos.",
+      "quotes": [
+        "el 60 por ciento de la desigualdad que ahora mismo se sufre en España es como consecuencia de la imposibilidad de acceder a una vivienda",
+        "la clave no es construir solamente el mayor número de viviendas posible. La clave es construir vivienda asequible",
+        "si en el Parlamento del próximo 29 de noviembre no sale una mayoría mucho más amplia progresista, el Gobierno tiene pocas herramientas para intervenir"
+      ]
+    },
+    {
+      "topic": "Inmigración",
+      "position": "Sánchez defiende la integración como el principal desafío migratorio y critica la criminalización del migrante. Señala que España tiene una de las tasas de delincuencia más bajas de Europa, desmontando la asociación migración-criminalidad. Reconoce que hay que combatir la migración irregular y las mafias, pero defiende un enfoque humanista. Ha impulsado un plan de 500 millones para políticas de integración que las autonomías del PP no ejecutan.",
+      "quotes": [
+        "no es cierto que hay una relación positiva entre la migración y la criminalidad, es justo lo contrario, no la hay",
+        "nosotros en dos meses hemos habilitado 7500 plazas para poder acoger a todas estas personas",
+        "la fortaleza del Estado no significa un trato inhumano a los migrantes que llegan a nuestro país"
+      ]
+    },
+    {
+      "topic": "Redes sociales e inteligencia artificial",
+      "position": "Sánchez señala a los algoritmos como responsables parciales del auge de la ultraderecha, criticando la ingenuidad de creer que las plataformas tecnológicas son neutras. Describe a los 'tecnoligarcas' como gente inteligente pero potencialmente malvada, con una visión 'transhumanista' que menosprecia la democracia. Defiende la regulación estatal y europea de las plataformas, con responsabilidad penal para los algoritmos que desinformen.",
+      "quotes": [
+        "hemos pecado de ingenuos pensando que la tecnología es neutra",
+        "la inteligencia artificial es una industria extractiva. Desde el punto de vista de los recursos naturales, la explotación laboral, hasta incluso los datos que tú o yo, cuando utilizamos el móvil, estamos dando gratuitamente",
+        "lo que no puede ser es un Estado fallido... en el mundo digital necesitamos también esas normas"
+      ]
+    },
+    {
+      "topic": "Corrupción y casos judiciales",
+      "position": "Sánchez reconoce que el caso Ábalos fue 'una decepción doble' y admite que fue un error. Defiende con convicción la inocencia de Begoña Gómez, argumentando que su mujer renunció a su trabajo al llegar él a la presidencia y que el caso no tiene base. Defiende también a su hermano David Sánchez como alguien con tres carreras que fue condenado únicamente por ser familiar del presidente.",
+      "quotes": [
+        "los casos de corrupción que he sufrido en mi partido con José Luis Ábalos ha sido una decepción para mí doble, sin duda alguna",
+        "Begoña y yo nos conocimos con 30, 31 años. Entonces ella era una persona ya con una carrera profesional muy consolidada",
+        "sí se han traspasado líneas rojas que afectan a personas a las que yo quiero, mi mujer, Begoña Gómez, y mi hermano"
+      ]
+    },
+    {
+      "topic": "Ley de amnistía y Cataluña",
+      "position": "Sánchez defiende la ley de amnistía como validada por el Tribunal Constitucional y el Tribunal de Justicia Europeo, y como la herramienta correcta para resolver un conflicto político que el gobierno anterior había derivado a la justicia. Su objetivo ha sido devolver a la política la gestión del conflicto catalán, resultado que considera logrado con la presidencia de Salvador Illa en Cataluña.",
+      "quotes": [
+        "el Tribunal de Justicia Europeo y también el Tribunal Constitucional han dicho que la ley de amnistía es una ley que se utiliza en otras muchas democracias",
+        "yo lo que he querido es devolver a la política la gestión de la política en Cataluña",
+        "tenemos ahora mismo a un presidente como Salvador Illa liderando Cataluña"
+      ]
+    },
+    {
+      "topic": "Política exterior y Trump",
+      "position": "Sánchez se muestra crítico con la exigencia de Trump de que España gaste el 5% del PIB en defensa, calculando que implicaría 60.000 millones de ajuste. Lamenta la falta de empatía de los grandes líderes ante las guerras en Ucrania e Irán, señalando que Europa ha gastado más de 100.000 millones en compensar el impacto energético. Mantiene una actitud diplomática ante Trump en persona, pero defiende la soberanía española.",
+      "quotes": [
+        "lo del 5 % del gasto en defensa significa un ajuste de 60.000 millones de euros que hay que sacar de algún lado. Entonces, o impuestos o rebajas las pensiones o recortas el Estado del bienestar",
+        "yo trato de tener las mejores relaciones posibles, pero evidentemente defendiendo la soberanía de mi país",
+        "la falta de empatía de muchos de estos dirigentes a mí me sobrecoge"
+      ]
+    },
+    {
+      "topic": "Vox y amenaza democrática",
+      "position": "Sánchez distingue entre alternancia (sana en democracia) e 'involución' (lo que supone Vox). Pone como ejemplo la censura de obras de Lorca y la restricción de subvenciones a películas 'ideologizadas' por PP+Vox en Castilla y León. Señala que el problema no es que el PP gane, sino que legislen en regresión de derechos.",
+      "quotes": [
+        "cuando metes en la ecuación a Vox todo cambia. Ya no estamos hablando de alternancia, estamos hablando de involución",
+        "en la Junta de Castilla y León han acordado el PP y Vox el censurar aquellas subvenciones a creaciones artísticas... que ellos consideren ideologizadas",
+        "Es el 90 aniversario de la muerte de Lorca y el Ayuntamiento de Valladolid acaba de suspender una obra de Lorca de teatro"
+      ]
+    }
+  ]
+}

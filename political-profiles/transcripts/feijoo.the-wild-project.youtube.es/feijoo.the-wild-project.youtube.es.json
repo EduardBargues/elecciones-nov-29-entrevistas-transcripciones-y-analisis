@@ -1,0 +1,89 @@
+{
+  "candidate": "Feijoo",
+  "program": "The Wild Project",
+  "platform": "youtube",
+  "source_file": "transcripts/feijoo.the-wild-project.youtube.es.txt",
+  "topics": [
+    {
+      "topic": "Gestión económica y deuda pública",
+      "position": "Feijóo critica el modelo de crecimiento económico del gobierno de Sánchez, que atribuye al incremento de población inmigrante y al gasto público desbocado, no a un aumento de productividad. Denuncia que la deuda se ha incrementado un 40% y que España ha recibido 80.000 millones de fondos europeos que considera deuda a devolver. Defiende un crecimiento sano basado en inversión privada y extranjera, y se compromete a no incrementar el déficit. Señala que logró superávit en los últimos presupuestos de Galicia mientras renovaba hospitales e infraestructuras.",
+      "quotes": [
+        "Lo que se ha incrementado son más de 4 millones de ciudadanos, mayoritariamente inmigrantes... Por tanto, ha crecido por eso y después porque se ha incrementado un 22% el gasto público y claro, se ha incrementado un 40 y pico% la deuda. Por tanto, eso no es el crecimiento sano de la economía.",
+        "El crecimiento sano de la economía es conseguir mayor inversión pública, sobre todo inversión privada, traer inversión extranjera.",
+        "Si hemos cobrado más impuestos que nunca y hemos nos hemos endeudado más que nunca y hemos recibido más fondos que nunca. Por tanto, lo de la deuda es un tema muy serio."
+      ]
+    },
+    {
+      "topic": "Pensiones y sostenibilidad del sistema",
+      "position": "Feijóo se compromete a actualizar las pensiones conforme al IPC para los jubilados actuales, pero reconoce la tensión estructural del sistema ante la jubilación masiva de la generación de los 60. Descarta subir impuestos para financiarlas y rechaza ampliar obligatoriamente la edad de jubilación más allá de los 67 años, aunque la dejará como opción voluntaria incentivada. Su solución principal es el crecimiento económico sano para generar nuevos cotizantes, la reducción del absentismo laboral fraudulento y la creación de empleo mediante la construcción de un millón de viviendas.",
+      "quotes": [
+        "Yo me comprometo a la actualización de las pensiones de acuerdo con el índice de precios al consumo.",
+        "No tenemos previsto ampliar obligatoriamente la edad de jubilación después de los 67.",
+        "Si hacemos un millón de viviendas, crearemos 500,000 puestos de trabajo."
+      ]
+    },
+    {
+      "topic": "Autónomos y pequeña empresa",
+      "position": "Feijóo considera que los autónomos nunca han sido tratados adecuadamente y propone un paquete de medidas específicas: exención de IVA para autónomos que facturen menos de 85.000 euros (trasponer directiva europea que el gobierno ha ignorado), cuota cero el primer año por cada nuevo trabajador contratado, reducción del 50% de cuota para el segundo trabajador, y permisos de maternidad sin pago de cuota. También plantea flexibilizar la frecuencia de las declaraciones fiscales. Denuncia que el gobierno actual ha subido cuotas e impuestos a todos sin actualizar las tarifas con la inflación.",
+      "quotes": [
+        "Los que llevan 12 años y facturan menos de 85,000 € no pagarán IVA. No pagarán IVA y cuotas.",
+        "Un autónomo que contrate a otro, el primer año de ese autónomo contratado, no pagará la cuota.",
+        "Las cuotas le han subido a todo el mundo, ¿no? Cuando este gobierno dice que es el gobierno más progresista, es el gobierno que más impuestos y más cuotas ha cobrado los trabajadores en la historia de nuestro país."
+      ]
+    },
+    {
+      "topic": "Inmigración",
+      "position": "Feijóo defiende una política migratoria ordenada vinculada al trabajo: quienes entran de forma irregular deben ser devueltos a sus países o trasladados a terceros países según el Reglamento de Retorno europeo (que Sánchez votó en contra). Apoya regularizar a quienes tienen contrato laboral, incluso en negro (con sanción al empleador). Se opone a la regularización masiva de 1,3 millones de personas que califica de improvisación. Propone priorizar ayudas según años de censo y cotizaciones, no por nacionalidad (que sería ilegal bajo el derecho europeo). Critica que España sea el país de la UE con mayor inmigración irregular.",
+      "quotes": [
+        "Voy a pedirle que venga a España a aportar. Aprender nuestro idioma, respetar nuestras leyes y a integrarse socialmente.",
+        "España es el país único de la Unión Europea que está en este momento regularizando de forma indiscriminada a 1,3 millones de inmigrantes. Es evidente que esto ha sido una frivolidad manifiesta.",
+        "Los que entren de forma irregular... usted se tiene que ir."
+      ]
+    },
+    {
+      "topic": "Pacto con Vox y estructura de gobierno",
+      "position": "Feijóo no descarta pactar con Vox si necesita su apoyo, aunque señala diferencias en política europea y en el modelo de Estado de las Autonomías. Cita cuatro acuerdos autonómicos existentes con Vox (Andalucía, Castilla León, Aragón, Extremadura) como ejemplo de que los pactos se pueden gestionar respetando la Constitución y los compromisos de igualdad. Planea reducir el número de ministerios de 22 a 14-15, lo que implica eliminar el Ministerio de Igualdad como tal (sus competencias se integrarán en otros ministerios) y el Ministerio de Vivienda.",
+      "quotes": [
+        "Vox es la tercera fuerza política de nuestro país... El respeto a la Constitución, al estado derecho, a la normativa europea, el respeto a los temas de violencia de género, los compromisos relativos a la igualdad real y efectiva de hombre y mujer.",
+        "Mi digamos mi estructura ministerial estará entre 14 y 15 ministerios. El Ministerio de Igualdad se agrupará con otros ministerios.",
+        "La idea de Europa yo no la comparto [con Vox]. El estado de las autonomías en la que ellos no creen, yo sí creo."
+      ]
+    },
+    {
+      "topic": "Política exterior y defensa",
+      "position": "Feijóo se compromete a aumentar el gasto en defensa de forma gradual y honesta, partiendo de una auditoría del gasto actual que considera opaco. Critica a Sánchez por anunciar en la OTAN que llegaría al 3,5% y luego contradecirse públicamente. Subraya que España necesita alianzas máximas en la UE y la OTAN ante las amenazas de las fronteras este (Rusia/Ucrania) y sur (inmigración irregular). No apoya el servicio militar obligatorio salvo en situación de emergencia extrema.",
+      "quotes": [
+        "Llegaré, haré la auditoría de gasto, explicaré cuál es el gasto en mi país y diré exactamente a qué gasto en defensa podemos llegar.",
+        "Lo que no voy a hacer es mentir. Lo que no voy a hacer es encabronarme con todos los aliados para después llegar a España, sacar pecho y decir, '¡Qué progresista soy!'",
+        "Europa está en una situación crítica. La frontera este está en guerra... La frontera sur, en mi opinión, tiene un riesgo potencial mayor que la frontera este."
+      ]
+    },
+    {
+      "topic": "Crisis de Ceuta y relaciones con Marruecos",
+      "position": "Feijóo critica duramente la gestión del gobierno de la crisis de Ceuta, afirmando que los servicios de inteligencia avisaron con días de antelación y no se tomaron medidas. Él habría contactado inmediatamente con el gobierno marroquí para blindar la frontera, desplegado el ejército como medida disuasoria y escalado el conflicto a nivel europeo. Exige que se desclasifiquen los informes del CNI. Considera que España no puede mantener acuerdos comerciales con Marruecos si este no respeta la frontera europea.",
+      "quotes": [
+        "Lo primero que hubiera hecho es ponerme en contacto con el gobierno marroquí y decirle, 'Oye, sabemos, sabéis perfectamente qué es lo que está ocurriendo, vamos a blindar la frontera.'",
+        "No podemos considerar a Marruecos como un aliado estratégico de la Unión Europea cuando Marruecos invade la Unión Europea.",
+        "Toda aquella información que se le ha ocultado a los españoles, no se la voy a ocultar."
+      ]
+    },
+    {
+      "topic": "Corrupción y transparencia institucional",
+      "position": "Feijóo reconoce que el caso Gürtel fue muy grave para el PP y le costó el gobierno, pero señala que todos los implicados fueron juzgados. Afirma que bajo su liderazgo el PP no ha tenido irregularidades y que él no ha recibido ni pedido dinero. Critica con dureza los casos Koldo, Ávalos y Cerdán en el PSOE y la falta de dimisiones. Defiende la transparencia presupuestaria como condición básica de la democracia, criticando que Sánchez sea el primer presidente en 50 años que no aprueba ningún presupuesto.",
+      "quotes": [
+        "Si alguien puede decir que se ha cometido con una irregularidad en mi partido, que lo diga.",
+        "No hay ningún ofrecimiento de dinero de mi partido a nadie.",
+        "La democracia no es votar el 29. La democracia es que el que salga el 29 tiene que cumplir unas reglas para gobernar... No hay ningún gobierno que pueda gastar un presupuesto si no tiene autorización de las cortes."
+      ]
+    },
+    {
+      "topic": "Absentismo laboral",
+      "position": "Feijóo denuncia que el coste del absentismo laboral se ha más que duplicado desde 2018, superando los 30.000 millones de euros anuales, y que el número de personas que no acude al trabajo diariamente ha pasado de 450.000 a más de un millón. Distingue entre el absentismo legítimo (patologías graves, salud mental real) y el fraudulento, y propone combatir el segundo. Se compromete a garantizar el 100% del salario en enfermedades graves o que pongan en riesgo la vida, y a negociar con sindicatos reducciones del absentismo como lo hizo con éxito en Correos.",
+      "quotes": [
+        "Año 2025, más de 30.000 millones [de coste por absentismo]. Año 2018, número de personas que a trabajar de media diaria, unas 450 470,000 personas. Año 25, más de 1 millón de personas diarias no acuden a su puesto de trabajo.",
+        "En esas patologías absolutamente invalidantes, patologías que ponen en riesgo la vida de las personas, pues debemos de pagar el 100%.",
+        "Me senté con los sindicatos y llegamos a un pacto. Teníamos un absentismo del ocho... y lo bajamos al cuatro."
+      ]
+    }
+  ]
+}

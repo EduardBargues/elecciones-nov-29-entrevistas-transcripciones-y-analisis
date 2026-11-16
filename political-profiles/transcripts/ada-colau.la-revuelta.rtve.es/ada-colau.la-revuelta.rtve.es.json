@@ -1,0 +1,87 @@
+{
+  "candidate": "Ada Colau",
+  "program": "La Revuelta",
+  "platform": "rtve",
+  "source_file": "transcripts/ada-colau.la-revuelta.rtve.es.txt",
+  "topics": [
+    {
+      "topic": "Vivienda y especulación inmobiliaria",
+      "position": "Colau defiende acabar radicalmente con la especulación inmobiliaria como su principal motivación para volver a la política. Propone expropiar a los fondos buitre (13 fondos que poseen 100.000 viviendas), estabilizar y bajar los alquileres, y extender a nivel estatal la ley de tanteo y retracto que ella aplicó en Barcelona. Distingue entre el pequeño propietario, al que hay que proteger, y el gran especulador, al que hay que frenar. Subraya que la voluntad política es el único obstáculo real para ejecutar estas medidas.",
+      "quotes": [
+        "hay que expropiar a los fondos buitre, lo tenemos claro. Hay 13 fondos buitre que tienen 100.000 viviendas.",
+        "si quieres especular, lo haces con relojes de lujo o cualquier cosa que no sea necesaria para la vida, pero con la vivienda, se acabó especular",
+        "si en el Ayuntamiento de Barcelona pudimos hacer una ley de tanteo y retracto... Así nosotros, por ejemplo, recuperamos 1600 viviendas que estaban en manos de la especulación y las pasamos al parque público."
+      ]
+    },
+    {
+      "topic": "Fiscalidad y redistribución",
+      "position": "Colau defiende una reforma fiscal profunda que grave a los grandes patrimonios y corrija la desigualdad actual, donde los bancos pagan el 7-8% de impuestos sobre beneficios mientras las pequeñas empresas pagan el 19-20%. Propone que los 33 multimillonarios de España paguen impuestos muy superiores para financiar pensiones, sanidad y educación públicas. Enmarca la fiscalidad progresiva no como un castigo sino como la condición necesaria para mantener el Estado del bienestar.",
+      "quotes": [
+        "una peluquería está pagando alrededor de un 19 o un 20 % de impuestos por los beneficios, mientras que un banco paga un 7 o 8, cuando están declarando este mismo año 30.000 millones de beneficio",
+        "Los impuestos son sexis. Son sexis si paga quien más tiene.",
+        "Florentino Pérez, que tiene 4900 millones, seguro que puede pasar apagar 318 en lugar de 150 millones."
+      ]
+    },
+    {
+      "topic": "Pensiones",
+      "position": "Colau denuncia que 4,6 millones de personas, especialmente mujeres, cobran pensiones por debajo del salario mínimo, con 2 millones de pensionistas que no llegan a los 900 euros al mes. Vincula directamente la subida de pensiones a la reforma fiscal: solo gravando a los grandes patrimonios se puede financiar una jubilación digna para quienes han trabajado toda su vida.",
+      "quotes": [
+        "4.600.000 personas en este país que después de haber trabajado toda la vida... ahora tenemos unas jubilaciones que 4.600.000 personas no llegan al salario mínimo.",
+        "2 millones de pensionistas, básicamente mujeres, no llega a los 900 euros. ¿Crees que con el coste de la vida que tenemos ahora en las ciudades españolas se puede vivir dignamente con 900 euros al mes?"
+      ]
+    },
+    {
+      "topic": "Cambio climático y transición energética",
+      "position": "Colau considera el cambio climático un tema principal e ineludible: la emergencia climática ya no es abstracta, se manifiesta en sequías, incendios y DANAs crecientes. Defiende salir de la economía del combustible fósil y situar a España como líder en renovables, argumentando que esta transición no solo reduce emisiones sino que genera empleo bien remunerado y reduce la dependencia del turismo.",
+      "quotes": [
+        "Ya no es una entelequia... ya sabemos que somos de las zonas más afectadas del planeta y lo estamos viviendo: las sequías, los incendios, los grandes temporales como la DANA ya no son una anécdota, sino que van a ser cada año.",
+        "hay que salir ya de la economía del combustible fósil claramente... España está muy bien situada para ser totalmente líder en tema de renovables.",
+        "las renovables pueden generar un montón de puestos de trabajo bien remunerados y que nuestra economía no dependa tanto del turismo"
+      ]
+    },
+    {
+      "topic": "PSOE y connivencia con la especulación inmobiliaria",
+      "position": "Colau critica al PSOE por sus vínculos estructurales con el sector inmobiliario especulativo. Señala el caso de Joan Clos, exalcalde socialista de Barcelona que pasó a ejercer de lobbysta contra la ley de control del alquiler, retrasándola cinco años. También denuncia que Pedro Sánchez le prometió en 2019 aprobar una ley de limitación del alquiler en Barcelona y no la aprobó hasta 2024-2025, poniendo excusas durante años.",
+      "quotes": [
+        "Pedro Sánchez se comprometió conmigo en el año 19... 'En Barcelona vamos a aprobar la ley para limitar el precio del alquiler'. Y esa ley no se aprobó hasta el 2024 o 2025. Pasaron cinco años.",
+        "Joan Clos, ese hombre socialista que estuvo haciendo luego de lobby especulador para frenar esa ley.",
+        "acaba de dimitir la portavoz de Pedro Sánchez porque resulta que era una familia de grandes propietarios que especulaban con la vivienda."
+      ]
+    },
+    {
+      "topic": "Frente Amplio y unidad de la izquierda",
+      "position": "Colau defiende el Frente Amplio como un gran esfuerzo de unidad popular con 15 formaciones políticas. Afirma haber ofrecido ceder su candidatura si otra persona generaba más consenso, y atribuye la ausencia de Podemos a su negativa a sentarse a negociar. La unidad de la izquierda es para ella una condición necesaria tanto para frenar a la extrema derecha como para garantizar medidas reales en vivienda.",
+      "quotes": [
+        "en Frente Amplio hay 15 organizaciones políticas, no está mal como esfuerzo de unidad popular",
+        "si hay otra persona que tenga más consenso, yo me aparto y cedo... Lo dejé grabado por todas las televisiones de España",
+        "si alguien no quiere estar en el Frente Amplio, no lo puedes obligar."
+      ]
+    },
+    {
+      "topic": "Feminismo e igualdad de género",
+      "position": "Colau se define como feminista del 99%, entendiendo el feminismo como una causa colectiva que beneficia a toda la sociedad, no solo a las mujeres. Defiende los avances en derechos LGTBI (ley trans) como conquistas de derechos humanos universales. Subraya que el feminismo también libera a los hombres de modelos patriarcales rígidos, y hace pedagogía sobre la diversidad de formas de ser hombre.",
+      "quotes": [
+        "el feminismo me gusta decir del 99 %, creo que el feminismo no tiene que estar solo...",
+        "lo hago por las mujeres, defiendo políticas feministas por las mujeres... pero también por mis hijos. Yo quiero que mis hijos puedan crecer en libertad y que no tengan una única idea de qué significa ser hombre",
+        "cuando se conquistan políticas de derechos humanos, todo el mundo sale beneficiado de esas políticas, no solo las mujeres o las personas LGTBI."
+      ]
+    },
+    {
+      "topic": "Inmigración y extrema derecha",
+      "position": "Colau rechaza categóricamente el discurso de la extrema derecha que asocia inmigración con delincuencia o con el consumo de ayudas sociales, calificándolo de mentira objetiva no respaldada por ningún dato oficial. Denuncia que los medios de comunicación han permitido que estos bulos se asentaran como sentido común sin rebatirlos, y reivindica la inmigración como parte positiva e irrenunciable de la sociedad española.",
+      "quotes": [
+        "La inmigración no es un problema. La inmigración son nuestros vecinos y vecinas.",
+        "asociando inmigración con delincuencia, una cosa que es una mentira. Es una mentira objetiva que ningún dato respalda.",
+        "no es simplemente que se les haya dado voz, es que no se han contestado mentiras y violaciones de derechos humanos que promueven."
+      ]
+    },
+    {
+      "topic": "Palestina y política exterior",
+      "position": "Colau califica la situación en Gaza de genocidio y exige que Netanyahu sea juzgado y encarcelado. Considera que el cambio no vendrá del Gobierno israelí sino de Europa, a quien acusa de haber actuado como cómplice. Reclama que Europa corte de inmediato el tráfico de armas y todas las relaciones comerciales con Israel.",
+      "quotes": [
+        "el genocida deja de ser presidente, pero hasta que no le juzguen y lo encarcelen, no vamos a aplaudir",
+        "Europa, hasta ahora, ha actuado como cómplice del genocidio y Europa tiene que cortar radicalmente todo el tráfico de armas, todas las relaciones comerciales."
+      ]
+    }
+  ]
+}

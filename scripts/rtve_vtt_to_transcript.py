@@ -146,16 +146,6 @@ def parse_vtt(filepath, guest_name, guest2_name=None):
         if ts < interview_start:
             continue
 
-        if guest2_pattern:
-            # Scan yellow lines first to detect who Broncano is addressing
-            for raw in text_lines:
-                if "<c.yellow>" in raw:
-                    clean = strip_tags(raw)
-                    if guest2_pattern.search(clean):
-                        active_guest = "guest2"
-                    elif guest1_pattern.search(clean):
-                        active_guest = "guest"
-
         for raw in text_lines:
             key, text = classify_line(raw, active_guest)
             if key and text:
@@ -165,10 +155,11 @@ def parse_vtt(filepath, guest_name, guest2_name=None):
 
 
 def merge_consecutive(entries, guest_name, guest2_name=None):
+    combined = f"{guest_name} & {guest2_name}" if guest2_name else guest_name
     key_to_name = {
         "host": HOST_NAME,
-        "guest": guest_name,
-        "guest2": guest2_name or guest_name,
+        "guest": combined,
+        "guest2": combined,
         "collaborator": "Colaborador",
         "other": "Other",
     }

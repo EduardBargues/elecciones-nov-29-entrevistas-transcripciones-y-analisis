@@ -7,9 +7,9 @@ Outputs a labeled transcript in [Speaker] Text format, compatible with the
 existing transcripts in this repository.
 
 Usage:
-  python3 audio_to_transcript.py <url_or_file> [output.txt]
-                                 [--model SIZE] [--host NAME] [--guest NAME]
-                                 [--language LANG] [--num-speakers N]
+  python3 audio_to_transcript.py <url_or_file> [--model SIZE] [--language LANG] [--num-speakers N]
+
+Output is written to transcripts/<input-stem>.txt automatically.
 
 Setup:
   pip install openai-whisper pyannote.audio torch torchaudio yt-dlp
@@ -31,7 +31,23 @@ import re
 import argparse
 import subprocess
 import tempfile
+import time
 from pathlib import Path
+
+
+def get_audio_duration(audio_path):
+    """Return audio duration in seconds, or None if unreadable."""
+    try:
+        import wave
+        with wave.open(audio_path, 'r') as wf:
+            return wf.getnframes() / wf.getframerate()
+    except Exception:
+        return None
+
+
+def fmt_duration(seconds):
+    m, s = divmod(int(seconds), 60)
+    return f"{m}m {s:02d}s"
 
 
 def parse_args():
@@ -39,15 +55,12 @@ def parse_args():
         description="Transcribe audio/video with speaker diarization via Whisper + pyannote"
     )
     parser.add_argument("input", help="YouTube URL or path to a local audio/video file")
-    parser.add_argument("output", nargs="?", help="Output .txt file (default: <stem>-transcript.txt)")
     parser.add_argument(
         "--model", default="medium",
         choices=["tiny", "base", "small", "medium", "large", "large-v2", "large-v3"],
         help="Whisper model size (default: medium)"
     )
     parser.add_argument("--language", default="es", help="Language code (default: es)")
-    parser.add_argument("--host", default="Host", help="Name for the first/most frequent speaker (usually the host)")
-    parser.add_argument("--guest", required=True, help="Name for the interview guest")
     parser.add_argument("--num-speakers", type=int, default=2, help="Expected number of speakers (default: 2)")
     return parser.parse_args()
 
@@ -79,7 +92,7 @@ def download_audio(url, output_dir):
     sys.exit(1)
 
 
-def transcribe(audio_path, model_name, language):
+def transcribe(audio_path, model_name, language, audio_duration=None):
     """Transcribe audio with Whisper. Returns a list of segment dicts."""
     try:
         import whisper
@@ -90,18 +103,88 @@ def transcribe(audio_path, model_name, language):
     print(f"Loading Whisper model '{model_name}'...")
     model = whisper.load_model(model_name)
 
-    print("Transcribing — this may take a while on CPU...")
+    realtime_factors = {"tiny": 0.1, "base": 0.2, "small": 0.5, "medium": 2.0,
+                        "large": 4.0, "large-v2": 4.0, "large-v3": 4.0}
+    if audio_duration:
+        factor = realtime_factors.get(model_name, 2.0)
+        est = fmt_duration(audio_duration * factor)
+        print(f"Transcribing ({fmt_duration(audio_duration)} of audio, ~{est} estimated on CPU)...")
+    else:
+        print("Transcribing — this may take a while on CPU...")
+
+    t0 = time.time()
     result = model.transcribe(audio_path, language=language, verbose=False)
     segments = result["segments"]
-    print(f"Transcribed {len(segments)} segments")
+    print(f"Transcription done in {fmt_duration(time.time() - t0)} — {len(segments)} segments")
     return segments
 
 
 def diarize(audio_path, num_speakers):
     """Run speaker diarization with pyannote. Returns list of (start, end, speaker) tuples."""
     try:
-        from pyannote.audio import Pipeline
+        import torchaudio
+        if not hasattr(torchaudio, 'list_audio_backends'):
+            torchaudio.list_audio_backends = lambda: ["soundfile"]
+        # torchaudio 2.11+ defaults to torchcodec which may not be installed;
+        # fall back to soundfile for audio loading.
+        try:
+            torchaudio.load("__probe__")
+        except ImportError:
+            import soundfile as _sf
+            import torch as _torch
+            def _sf_load(uri, frame_offset=0, num_frames=-1, *args, **kwargs):
+                stop = None if num_frames == -1 else frame_offset + num_frames
+                data, sr = _sf.read(
+                    str(uri), start=frame_offset, stop=stop,
+                    dtype="float32", always_2d=True
+                )
+                return _torch.tensor(data.T), sr
+            torchaudio.load = _sf_load
+        except Exception:
+            pass
+        if not hasattr(torchaudio, 'info'):
+            import soundfile as _sf
+            def _sf_info(path, *args, **kwargs):
+                i = _sf.info(str(path))
+                return torchaudio.AudioMetaData(
+                    sample_rate=i.samplerate,
+                    num_frames=i.frames,
+                    num_channels=i.channels,
+                    bits_per_sample=16,
+                    encoding="PCM_S",
+                )
+            torchaudio.info = _sf_info
+        if not hasattr(torchaudio, 'AudioMetaData'):
+            try:
+                from torchaudio.backend.common import AudioMetaData
+            except ImportError:
+                from dataclasses import dataclass
+                @dataclass
+                class AudioMetaData:
+                    sample_rate: int
+                    num_frames: int
+                    num_channels: int
+                    bits_per_sample: int
+                    encoding: str
+            torchaudio.AudioMetaData = AudioMetaData
         import torch
+        try:
+            import lightning_fabric.utilities.cloud_io as _cloud_io
+            _orig_load = _cloud_io._load
+            def _patched_load(path_or_url, map_location=None, **kwargs):
+                kwargs['weights_only'] = False
+                return _orig_load(path_or_url, map_location=map_location, **kwargs)
+            _cloud_io._load = _patched_load
+        except Exception:
+            pass
+        import huggingface_hub
+        _real_download = huggingface_hub.hf_hub_download
+        def _patched_download(*args, **kwargs):
+            if 'use_auth_token' in kwargs:
+                kwargs['token'] = kwargs.pop('use_auth_token')
+            return _real_download(*args, **kwargs)
+        huggingface_hub.hf_hub_download = _patched_download
+        from pyannote.audio import Pipeline
     except ImportError:
         print("Error: 'pyannote.audio' not installed. Run: pip install pyannote.audio torch", file=sys.stderr)
         sys.exit(1)
@@ -115,19 +198,19 @@ def diarize(audio_path, num_speakers):
         sys.exit(1)
 
     print("Loading pyannote diarization pipeline...")
-    pipeline = Pipeline.from_pretrained(
-        "pyannote/speaker-diarization-3.1",
-        use_auth_token=hf_token
-    )
+    import huggingface_hub
+    huggingface_hub.login(token=hf_token, add_to_git_credential=False)
+    pipeline = Pipeline.from_pretrained("pyannote/speaker-diarization-3.1")
 
-    print("Running speaker diarization...")
+    print("Running speaker diarization (~1x realtime on CPU)...")
+    t0 = time.time()
     diarization = pipeline(audio_path, num_speakers=num_speakers)
 
     turns = [
         (turn.start, turn.end, speaker)
         for turn, _, speaker in diarization.itertracks(yield_label=True)
     ]
-    print(f"Found {len(turns)} speaker turns")
+    print(f"Diarization done in {fmt_duration(time.time() - t0)} — {len(turns)} speaker turns")
     return turns
 
 
@@ -145,23 +228,15 @@ def assign_speakers(segments, turns):
     return labeled
 
 
-def name_speakers(labeled, host_name, guest_name):
-    """Map pyannote speaker IDs to human names.
-
-    Heuristic: the speaker who accumulates the most total time is the host
-    (the interviewer typically speaks more in aggregate across a long interview).
-    If that heuristic feels wrong for a specific interview, swap --host and --guest.
-    """
+def name_speakers(labeled):
+    """Map pyannote speaker IDs to Speaker 1, Speaker 2, … by frequency."""
     from collections import Counter
     counts = Counter(s for s, _ in labeled)
-    most_frequent = counts.most_common(1)[0][0]
-
-    name_map = {most_frequent: host_name}
-    for speaker in counts:
-        if speaker != most_frequent:
-            name_map[speaker] = guest_name
-
-    return [(name_map.get(s, s), t) for s, t in labeled]
+    name_map = {
+        speaker: f"Speaker {i + 1}"
+        for i, (speaker, _) in enumerate(counts.most_common())
+    }
+    return [(name_map[s], t) for s, t in labeled]
 
 
 def merge_consecutive(labeled):
@@ -189,12 +264,15 @@ def main():
                 sys.exit(1)
             default_stem = Path(audio_path).stem
 
-        output_path = args.output or (default_stem + "-transcript.txt")
+        output_dir = Path("transcripts")
+        output_dir.mkdir(exist_ok=True)
+        output_path = output_dir / (Path(audio_path).with_suffix(".txt").name)
 
-        segments = transcribe(audio_path, args.model, args.language)
+        audio_duration = get_audio_duration(audio_path)
+        segments = transcribe(audio_path, args.model, args.language, audio_duration)
         turns = diarize(audio_path, args.num_speakers)
         labeled = assign_speakers(segments, turns)
-        labeled = name_speakers(labeled, args.host, args.guest)
+        labeled = name_speakers(labeled)
         labeled = merge_consecutive(labeled)
 
         lines = [f"[{speaker}] {text}" for speaker, text in labeled]

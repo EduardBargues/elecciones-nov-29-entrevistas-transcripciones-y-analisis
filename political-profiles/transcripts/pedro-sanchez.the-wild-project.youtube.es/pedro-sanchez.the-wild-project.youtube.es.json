@@ -1,0 +1,88 @@
+{
+  "candidate": "Pedro Sanchez",
+  "program": "The Wild Project",
+  "platform": "youtube",
+  "source_file": "transcripts/pedro-sanchez.the-wild-project.youtube.es.txt",
+  "topics": [
+    {
+      "topic": "Gestión ferroviaria y accidentes de tren",
+      "position": "Sánchez reconoce que se cometieron fallos en la gestión ferroviaria y que los dos accidentes mortales no son asumibles para un país como España. Defiende que las responsabilidades políticas no se dan por los hechos en sí sino por omisión o por la respuesta dada, y que el Gobierno respondió adecuadamente. Anuncia una inversión de 19.000 millones entre 2026 y 2030 en mantenimiento y seguridad, e introduce la doble firma para mandos de control, como en la aviación.",
+      "quotes": [
+        "no es asumible para un país como España el sufrir dos accidentes de estas características en la alta velocidad",
+        "lo que estamos haciendo es negociar con los maquinistas pues coeficientes reductores de la seguridad social... una auditoría extraordinaria de seguridad de la línea Madrid Sevilla y también un compromiso de 2026 a 2030 que... vamos a invertir 19,000 millones de euros en el mantenimiento y la seguridad de las vías ferroviarias",
+        "las responsabilidades políticas cuando tú estás en un tipo de puestos como el que nosotros estamos pueden ser por tres motivos. Uno, porque tú has tomado una decisión que efectivamente ha afectado en una tragedia. Dos, por omisión... tres, lo que son la reacción, la respuesta que tú das"
+      ]
+    },
+    {
+      "topic": "Inmigración e integración",
+      "position": "Sánchez defiende la inmigración como necesidad económica estructural para sostener el Estado del bienestar ante el invierno demográfico, citando que el 25% del crecimiento económico reciente se debe a la aportación migrante. Reconoce que el desafío de la integración no está funcionando bien y que la izquierda no ha prestado suficiente atención a este problema. Propone cuatro pilares: control de fronteras, cooperación con países de origen y tránsito, políticas de integración, y apertura de cauces de migración regular ordenada.",
+      "quotes": [
+        "el desafío que tiene la sociedad española, como todas las sociedades occidentales, de la integración de esa migración... ahí es donde yo creo que la izquierda en muchas ocasiones pues no le presta la suficiente atención",
+        "el 25% del crecimiento económico que hemos experimentado durante todo este tiempo trae causa del aporte de la migración",
+        "la migración ahora mismo, desde el punto de vista económico, es también una garantía de tener unos servicios públicos de calidad y de que tú y yo en un futuro podamos tener pensiones dignas"
+      ]
+    },
+    {
+      "topic": "Crisis migratoria de Ceuta",
+      "position": "Sánchez defiende la gestión de la crisis de Ceuta afirmando que nueve de cada diez migrantes que entraron salieron y que la respuesta humanitaria fue adecuada. No atribuye responsabilidad directa al Gobierno marroquí por falta de información concluyente, aunque reconoce que España debe mantener una relación de buena vecindad con Marruecos que incluye la defensa de la integridad territorial española y la soberanía de Ceuta y Melilla como líneas rojas.",
+      "quotes": [
+        "nueve de cada 10 migrantes que entraron salieron",
+        "yo a día de hoy no tengo esa información [para acusar a Marruecos]",
+        "tener una relación de buena vecindad con un país como Marruecos es tan importante como tenerla con Argelia y con el resto de países. Y eso es lo que yo he intentado hacer siempre, pero siempre desde... la defensa de la integridad territorial de un país"
+      ]
+    },
+    {
+      "topic": "Corrupción (casos Ávalos, Cerdán, Coldo)",
+      "position": "Sánchez reconoce que Ávalos y Cerdán fueron personas cercanas a él y que su descubrimiento le supuso una gran decepción personal. Niega haber sabido de la doble vida de Ávalos y defiende que actuó en cuanto tuvo información. Encuadra los casos como excepciones dentro de un gobierno mayoritariamente íntegro, y subraya que los implicados han salido del partido. Se muestra dispuesto a emprender acciones judiciales si se prueba daño al PSOE.",
+      "quotes": [
+        "a mí José Luis Ávalos conmigo delante nunca hizo ningún comentario. Ni un comentario, ni una broma, ninguno. Y desde luego yo no sabía, yo no sabía, yo no sabía que consumía prostitución.",
+        "el que dos secretarios de la organización, alguien tan importante elegidos por ti, tengan este problema... fue una decepción",
+        "el proyecto político que yo estoy liderando es un proyecto político íntegro... aquellos que la han pagado porque han salido del partido"
+      ]
+    },
+    {
+      "topic": "Vivienda",
+      "position": "Sánchez admite que la situación de la vivienda es dramática y que el Gobierno no ha hecho suficiente. Defiende que se han sentado las bases correctas: construcción de vivienda protegida, ley de alquiler que ya contiene precios en las zonas donde se aplica, y más de 7.000 millones transferidos a comunidades autónomas. Critica que la derecha no aplica la ley estatal de vivienda y señala que la discrepancia con su izquierda es la agilización de la ley del suelo. Propone continuar tanto construyendo como regulando el mercado del alquiler.",
+      "quotes": [
+        "Lo que es sagrado no es el mercado. Lo que es sagrado es un derecho que es constitucional, que es el derecho a acceder a una vivienda.",
+        "hemos multiplicado por ocho el presupuesto en vivienda, hemos repartido a las comunidades autónomas más de 7,000 millones de euros para la construcción de vivienda",
+        "donde sí se está aplicando la ley estatal de vivienda, es que se están conteniendo la evolución del precio de los alquileres"
+      ]
+    },
+    {
+      "topic": "Cataluña: indultos y amnistía",
+      "position": "Sánchez defiende el cambio de posición sobre los indultos y la amnistía como una evolución política legítima ante una crisis territorial sin precedentes. Afirma que judicializar el conflicto catalán fue un error del PP y que las medidas de gracia han permitido normalizar la convivencia en Cataluña. Argumenta que la alternativa —mantener a los líderes del Procés en prisión— hubiera sido peor para la cohesión territorial de España.",
+      "quotes": [
+        "vi que había un problema serio de convivencia y de riesgo de quiebra territorial en nuestro país. Por tanto, fui evolucionando",
+        "hoy a la postre en 2026 pues la sociedad en Cataluña y la sociedad en España está mucho mejor que si en lugar de haber hecho los indultos y haber hecho la amnistía, hoy tuviéramos a los líderes del Procés en la cárcel",
+        "judicializar la crisis política de Cataluña era un tremendo error cuando activó a la Fiscalía General del Estado contra los líderes del Procés"
+      ]
+    },
+    {
+      "topic": "Polarización política",
+      "position": "Sánchez reconoce que la polarización es bidireccional pero la considera asimétrica: la deshumanización y los insultos directos vienen principalmente de la derecha y la extrema derecha. Identifica tres técnicas de propaganda fascista que ve presentes en sus adversarios: deshumanización, transposición y verosimilitud. Defiende que el debate político puede ser incisivo sin insultar ni tratar al adversario como enemigo.",
+      "quotes": [
+        "yo creo que los insultos son asimétricos, y que la polarización es asimétrica",
+        "la deshumanización, la simplificación, el decir 'El problema de este país es esta persona y si quitamos esta persona se resuelven los problemas.' Eso es técnica fascista, propaganda fascista.",
+        "el debate político puede ser convincente, puede ser determinado, puedes ser hasta incluso incisivo... pero eso no significa que tengas que insultar a la gente ni a tus adversarios políticos"
+      ]
+    },
+    {
+      "topic": "Defensa y relación con Trump",
+      "position": "Sánchez se enorgullece de haber mantenido una posición firme frente a la exigencia de Trump de destinar el 5% del PIB a defensa, señalando que lo dijo y lo cumplió. También afirma haber mantenido su posición contra el genocidio en Gaza pese a presiones externas. Ambos casos los usa como ejemplos de coherencia frente a las críticas sobre su falta de palabra.",
+      "quotes": [
+        "Le dije le dije al señor Trump que no al 5% del presupuesto en defensa y lo he mantenido.",
+        "Dije que no al genocidio en Gaza y lo he mantenido"
+      ]
+    },
+    {
+      "topic": "Balance de gobierno y España en Europa",
+      "position": "Sánchez defiende con convicción que España vive uno de sus mejores momentos de la historia democrática y que es vista como ejemplo internacional de buen hacer. Enumera logros como la subida del salario mínimo, la regularización del IPC en pensiones, la apuesta por sanidad y educación públicas, la parificación de los permisos de paternidad/maternidad, y la reducción del paro. Atribuye los problemas pendientes a la herencia de recortes del PP y a la fragmentación parlamentaria que dificulta la mayoría.",
+      "quotes": [
+        "creo sinceramente que hoy España vive uno de sus mejores momentos de la historia democrática",
+        "Dije que iba a subir el salario mínimo interprofesional y lo he subido. Dije que iba a apostar por la educación pública, la formación profesional y lo he hecho. Dije que iba a apostar por la sanidad pública y lo he hecho. Dije que iba a regularizar las pensiones conforme al IPC y lo he hecho.",
+        "nos estamos jugando no solamente la alternancia, nos estamos jugando la involución"
+      ]
+    }
+  ]
+}

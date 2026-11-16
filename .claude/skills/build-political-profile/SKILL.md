@@ -107,4 +107,4 @@ Field notes:
 
 After saving, confirm:
 
-> "Perfil guardado en `/political-profiles/{slug}/pp-{slug}.json` con {N} criterios. Usa `/assess-candidates {slug}` para evaluar candidatos."
+> "Perfil guardado en `/political-profiles/{slug}/pp-{slug}.json` con {N} criterios."
